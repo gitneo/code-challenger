@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { PlayerTask } from './ranking/player-tasks/player-task.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { TaskComponent } from './task/task.component';
 
@@ -16,7 +17,8 @@ import { TaskComponent } from './task/task.component';
     AppComponent,
     LoginComponent,
     TaskComponent,
-    RankingComponent
+    RankingComponent,
+    PlayerTask
   ],
   imports: [
     BrowserModule,

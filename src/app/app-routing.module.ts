@@ -1,13 +1,16 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
+import { PlayerTask } from "./ranking/player-tasks/player-task.component";
 import { RankingComponent } from "./ranking/ranking.component";
 import { TaskComponent } from "./task/task.component";
 
 const routes :Routes = [
     {path:'',component:LoginComponent},
     {path:'task',component:TaskComponent},
-    {path:'ranking',component:RankingComponent}
+    {path:'ranking',component:RankingComponent,children:[
+        {path:'player-tasks', component:PlayerTask}
+    ]}
 ]
 
 @NgModule({
