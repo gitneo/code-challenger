@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RankingComponent } from './ranking/ranking.component';
 import { TaskComponent } from './task/task.component';
 
 
@@ -14,7 +15,8 @@ import { TaskComponent } from './task/task.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    TaskComponent
+    TaskComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule,
