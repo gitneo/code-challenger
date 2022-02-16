@@ -1,0 +1,61 @@
+<div class="main-wrapper">
+    <div class="page-wrapper">
+        <div class="content">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card-box">
+                        <h4 class="card-title">Basic Form</h4>
+                        <form [formGroup] = "taskForm" (ngSubmit)="onSave()">
+                            <div formGroupName = "player">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Username</label>
+                                    <div class="col-md-9">
+                                        <div>{{playerName}}</div>
+                                        <input type="text" class="form-control" formControlName="id" value="{{playerName}}">
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Select Task</label>
+                                    <div class="col-md-9">
+                                        <select class="select" formControlName="task" (change) = updateTaskDescription(taskSelection.value) #taskSelection>
+                                            <option value="" disabled>Choose your task</option>
+                                            <option *ngFor="let task of tasks" [ngValue]="task" value="{{task.id}}" >{{task.title}}</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label">Description:</label>
+                                <div class="col-lg-9">
+                                    <textarea rows="5" cols="5" class="form-control" placeholder="Enter message" formControlName="description">{{taskDescription}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Select language</label>
+                                <div class="col-md-9">
+                                    <select class="select" >
+                                        <option>Select</option>
+                                        <option value="1">A+</option>
+                                        <option value="2">O+</option>
+                                        <option value="3">B+</option>
+                                        <option value="4">AB+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label">Solution Code:</label>
+                                <div class="col-lg-9">
+                                    <textarea rows="5" cols="5" class="form-control" placeholder="Enter message" formControlName="solution"></textarea>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
