@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Component } from "@angular/core";
+import { Component, ComponentFactoryResolver } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { SubmissionService } from "./service/submission.service";
 import { TaskService } from "./service/task.service";
@@ -13,7 +13,14 @@ export class TaskComponent{
     taskForm :FormGroup;
     tasks :any;
     taskDescription :string;
-    playerName :string
+    playerName :string;
+    
+     code = {
+        script:"",
+        language:"",
+        versionIndex:""
+    }
+
 
 
     constructor(private http :HttpClient, private submissionService :SubmissionService, private taskService :TaskService){}
@@ -25,6 +32,7 @@ export class TaskComponent{
             'task':     new FormControl(null),
             'player':   new FormGroup({"id": new FormControl(null)}),
             'solution': new FormControl(null),
+            'status': new FormControl(null),
             'description':   new FormControl(null)
         });
 
@@ -35,9 +43,10 @@ export class TaskComponent{
         this.taskDescription =  this.taskForm.get("task").value.description;
     }
 
+
     onSave(){
         this.taskForm.get("player").get("id").setValue(localStorage.getItem("id"));
-        console.log( this.taskForm.value);
+        
           let submission = this.submissionService.post(this.taskForm.value);
           submission.subscribe(data=>{
               if(data){
@@ -47,4 +56,14 @@ export class TaskComponent{
               }
           })
         }
+
+    onRun(){
+       this.submissionService.getChallengeResult(this.code).subscribe(response=>{
+          if(response['statusCode'] == 200){
+            this.taskForm.get("status").setValue(true);
+          }else{
+            this.taskForm.get("status").setValue(false); 
+          }
+       });
+    }
 }
