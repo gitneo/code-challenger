@@ -9,16 +9,18 @@
                             <table class="table table-hover mb-0">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Player Nickname</th>
                                         <th>Challenges won</th>
-                                        <th>Email</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let rank of ranking" >
+                                        <td>{{rank.id}}</td>
                                         <td>{{rank.pla_nickname}}</td>
                                         <td>{{rank.top}}</td>
-                                        <td><a [routerLink] = "['task-done']">View tasks</a></td>
+                                        <td><a (click) = "showAm(rank.id)">View tasks</a></td>
                                     </tr>
                                 </tbody>
                             </table>

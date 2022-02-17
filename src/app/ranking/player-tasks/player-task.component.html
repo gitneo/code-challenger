@@ -1,23 +1,19 @@
 <div class="col-lg-6">
     <div class="card-box">
         <div class="card-block">
-            <h4 class="card-title">Tasks</h4>
+            <h4 class="card-title">Challenges</h4>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">
                     <thead>
                         <tr>
+                            <th>Player</th>
                             <th>Task</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>john@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>mary@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>july@example.com</td>
+                        <tr *ngFor = "let playertask of playerTasks">
+                            <td>{{playertask.player}}</td>
+                            <td>{{playertask.task}}</td>
                         </tr>
                     </tbody>
                 </table>
