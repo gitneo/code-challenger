@@ -30,8 +30,9 @@ export class TaskComponent{
 
     }
 
-    updateTaskDescription(value){
-        
+    updateTaskDescription(){
+        console.log();
+        this.taskDescription =  this.taskForm.get("task").value.description;
     }
 
     onSave(){
