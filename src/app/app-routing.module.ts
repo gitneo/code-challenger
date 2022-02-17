@@ -11,7 +11,7 @@ const routes :Routes = [
     {path:'app',component:PageTemplateComponent, children:[
         {path:'task',component:TaskComponent},
         {path:'ranking',component:RankingComponent,children:[
-            {path:'player-tasks', component:PlayerTask}
+            {path:'task-done/:id', component:PlayerTask}
         ]}
     ]}
    
