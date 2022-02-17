@@ -13,7 +13,7 @@ export class LoginComponent{
     constructor(private loginService: LoginService, private router: Router){}
 
     login(){
-        this.loginService.authenticate(this.player,()=>{this.router.navigateByUrl('/task')});
+        this.loginService.authenticate(this.player,()=>{this.router.navigateByUrl('/app/task')});
         return false;
     }
 }

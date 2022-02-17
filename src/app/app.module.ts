@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlayerTask } from './ranking/player-tasks/player-task.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { PageTemplateComponent } from './shared/template/page-template.component';
 import { TaskComponent } from './task/task.component';
 
 
@@ -18,7 +19,8 @@ import { TaskComponent } from './task/task.component';
     LoginComponent,
     TaskComponent,
     RankingComponent,
-    PlayerTask
+    PlayerTask,
+    PageTemplateComponent
   ],
   imports: [
     BrowserModule,
