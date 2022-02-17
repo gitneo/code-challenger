@@ -19,7 +19,6 @@ export class TaskComponent{
     constructor(private http :HttpClient, private submissionService :SubmissionService, private taskService :TaskService){}
 
     ngOnInit(){
-        this.playerName = localStorage.getItem('username');
         this.taskService.get().subscribe(test => this.tasks = test);
 
         this.taskForm = new FormGroup({
@@ -31,13 +30,13 @@ export class TaskComponent{
 
     }
 
-    updateTaskDescription(value :string){
-        console.log(value);
-        this.taskDescription = value;
+    updateTaskDescription(value){
+        
     }
 
     onSave(){
-        console.log(this.taskForm.value);
+        this.taskForm.get("player").get("id").setValue(localStorage.getItem("id"));
+        console.log( this.taskForm.value);
           let submission = this.submissionService.post(this.taskForm.value);
           submission.subscribe(data=>{
               if(data){
