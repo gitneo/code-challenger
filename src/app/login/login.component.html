@@ -4,11 +4,11 @@
             <div class="account-box">
                 <form  class="form-signin" (submit)="login()" >
                     <div class="account-logo">
-                        <p>{{status}}</p>
+                        <p style="color:red;">{{status}}</p>
                         <a href="index-2.html"><img src="assets/img/logo_code2.png" alt=""></a>
                     </div>
                     <div class="form-group">
-                        <label>Username or Email</label>
+                        <label>Username</label>
                         <input type="text" autofocus="" class="form-control" [(ngModel)] = "player.username" name="username">
                     </div>
                     <div class="form-group">
