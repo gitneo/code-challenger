@@ -1,6 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Component, ComponentFactoryResolver } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { Code } from "./model/code.model";
 import { SubmissionService } from "./service/submission.service";
 import { TaskService } from "./service/task.service";
 
@@ -14,8 +15,9 @@ export class TaskComponent{
     tasks :any;
     taskDescription :string;
     playerName :string;
+    answer:string;
     
-     code = {
+     code :Code = {
         script:"",
         language:"",
         versionIndex:""
@@ -39,31 +41,36 @@ export class TaskComponent{
     }
 
     updateTaskDescription(){
-        console.log();
         this.taskDescription =  this.taskForm.get("task").value.description;
+        this.answer =  this.taskForm.get("task").value.answer;
     }
 
 
     onSave(){
         this.taskForm.get("player").get("id").setValue(localStorage.getItem("id"));
         
-          let submission = this.submissionService.post(this.taskForm.value);
-          submission.subscribe(data=>{
-              if(data){
-                  //this.successfully('saved')
-              }else{
-                 // this.failed('save')
-              }
-          })
-        }
+        this.submissionService.post(this.taskForm.value).subscribe(
+            {
+                next: response => {
+                    console.log(response);
+                },
+                error: error => {
+                    console.error('There was an error!', error.message);
+                }
+            }
+        );
+    }
+
 
     onRun(){
-       this.submissionService.getChallengeResult(this.code).subscribe(response=>{
-          if(response['statusCode'] == 200){
-            this.taskForm.get("status").setValue(true);
-          }else{
-            this.taskForm.get("status").setValue(false); 
-          }
+       this.submissionService.getChallengeResult(this.code).subscribe(
+           response=>{
+               //COMPLETE THIS
+                if(response['statusCode'] == 200 && response['output'] == this.answer){
+                    this.taskForm.get("status").setValue(true);
+                }else{
+                    this.taskForm.get("status").setValue(false); 
+                }
        });
     }
 }
