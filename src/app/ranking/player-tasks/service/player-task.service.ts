@@ -10,7 +10,7 @@ export class PlayerTaskService{
     constructor(private http: HttpClient){}
 
     get(id:number){
-        return this.http.get<ITaskg>(environment.hostUrl+'/api/v1/tasks/'+id);
+        return this.http.get<ITask>(environment.hostUrl+'/api/v1/tasks/'+id);
     }
 
 }
